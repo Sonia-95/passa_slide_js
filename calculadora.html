@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Calculadora de IMC</title>
+
+<style>
+    body { font-family: Arial, sans-serif; max-width: 400px; margin: 50px auto; }
+    label, input, button { display: block; margin: 10px 0; width: 100%; }
+    #resultado { margin-top: 20px; font-weight: bold; }
+</style>
+
+</head>
+<body>
+
+<h2>Calculadora de IMC</h2>
+
+<label for="peso">Peso (kg):</label>
+<input type="number" id="peso" placeholder="Ex: 70" />
+
+<label for="altura">Altura (m):</label>
+<input type="number" id="altura" step="0.01" placeholder="Ex: 1.75" />
+
+<button id="calcular">Calcular IMC</button>
+
+<div id="resultado"></div>
+<div id="resultado2"></div>
+
+<script>
+    const botaoCalcular = document.getElementById('calcular');
+    botaoCalcular.addEventListener('click', () => {
+    const peso = parseFloat(document.getElementById('peso').value);
+    const altura = parseFloat(document.getElementById('altura').value);
+    const resultadoDiv = document.getElementById('resultado');
+
+    if (!peso || !altura) {
+        resultadoDiv.textContent = 'Por favor, preencha peso e altura corretamente.';
+        return;
+    }
+    const imc = peso / (altura * altura);
+    let classificacao = '';
+
+    if (imc < 18.5) {
+        classificacao = 'Abaixo do peso';
+    } else if (imc < 25) {
+        classificacao = 'Peso normal';
+    } else if (imc < 30) {
+        classificacao = 'Sobrepeso';
+    } else {
+        classificacao = 'Obesidade';
+    }
+    //deve usar crase para usar $
+    resultadoDiv.textContent = `Seu IMC é ${imc.toFixed(2)} (${classificacao})`;
+   
+    });
+</script>
+
+</body>
+</html>
