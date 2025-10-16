@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navegação entre Seções</title>
+  <style>
+    /* Estilos simples para as seções */
+    section {
+      display: none; /* Inicialmente, todas as seções estão ocultas */
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+    section.active {
+      display: block; /* A seção ativa será visível */
+    }
+
+    /* Estilos para os botões de navegação */
+    nav {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button onclick="showSection('section1')">Seção 1</button>
+    <button onclick="showSection('section2')">Seção 2</button>
+    <button onclick="showSection('section3')">Seção 3</button>
+  </nav>
+
+  <section id="section1">
+    <h2>Seção 1</h2>
+    <p>Conteúdo da primeira seção.</p>
+  </section>
+  <section id="section2">
+    <h2>Seção 2</h2>
+    <p>Conteúdo da segunda seção.</p>
+  </section>
+  <section id="section3">
+    <h2>Seção 3</h2>
+    <p>Conteúdo da terceira seção.</p>
+  </section>
+
+  <script>
+    // Função para mostrar a seção ativa e ocultar as outras
+    function showSection(sectionId) {
+      // Ocultar todas as seções
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // Mostrar a seção ativa
+      const activeSection = document.getElementById(sectionId);
+      activeSection.classList.add('active');
+    }
+
+    // Exibir a primeira seção por padrão ao carregar a página
+    window.onload = () => {
+      showSection('section1');
+    };
+  </script>
+
+</body>
+</html>
